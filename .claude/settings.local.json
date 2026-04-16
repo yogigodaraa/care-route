@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:visagioxhackathon.lovable.app)",
+      "Bash(curl -s 'https://visagioxhackathon.lovable.app/assets/index-DUNxHcjd.js')",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:api.github.com)",
+      "Bash(python3 -m pip install -q fastapi uvicorn pydantic)",
+      "Bash(curl -s -X POST http://localhost:8000/api/triage -H 'Content-Type: application/json' -d '{\"age_group\":\"toddler\",\"symptom_category\":\"fever\",\"duration_hours\":4,\"severity\":3,\"red_flags\":[]}')",
+      "Bash(python3 -m json.tool)",
+      "Bash(pip install:*)",
+      "Read(//Users/yogigodara/Downloads/**)",
+      "Read(//Users/yogigodara/.claude/**)",
+      "Bash(curl -s -H \"Accept: application/au.com.hotdoc.v5\" -H \"User-Agent: Mozilla/5.0\" \"https://www.hotdoc.com.au/api/patient/clinics/search?location=Sydney+CBD+2000&filters=gp&purpose=gp-consultation\")",
+      "Bash(curl -s -c /tmp/hd.txt -b /tmp/hd.txt \"https://www.hotdoc.com.au/search\" -H \"User-Agent: Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" -o /tmp/hd_page.html)",
+      "Read(//tmp/**)",
+      "Bash(curl -s -b /tmp/hd.txt -H \"Accept: application/au.com.hotdoc.v5\" -H \"X-CSRF-Token: _Nt32ulRYl0N5IW9fJfhMiC537_TR-wcYCeEWrLRZ1RsxpsKidxcRQqUWUBCxrAvTIeav4ed-qK6UFjdLLe7gQ\" -H \"X-Requested-With: XMLHttpRequest\" -H \"User-Agent: Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36\" -w \"\\\\n%{http_code}\" \"https://www.hotdoc.com.au/api/patient/locations?term=Sydney\")",
+      "Bash(perl -ne 'while \\(/\\(.{0,200}search_results.{0,200}\\)/gi\\) { print \"$1\\\\n---\\\\n\" }' /tmp/hd_chunk1_dec.js)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "Bash(break)",
+      "Bash(lsof -ti:3000)",
+      "Bash(xargs kill:*)",
+      "Bash(npx next:*)",
+      "mcp__ide__getDiagnostics",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} /demo\\\\n\" http://localhost:3000/demo)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} /api-docs\\\\n\" http://localhost:3000/api-docs)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} /api/voicemail-redirect/demo\\\\n\" \"http://localhost:3000/api/voicemail-redirect/demo\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} /api/childcare-alert/demo\\\\n\" \"http://localhost:3000/api/childcare-alert/demo\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} /\" http://localhost:3000)",
+      "Bash(curl -s -o /dev/null -w \" %{http_code} /demo\" http://localhost:3000/demo)",
+      "Bash(curl -s -o /dev/null -w \" %{http_code} /api-docs\" http://localhost:3000/api-docs)",
+      "Bash(curl -s -o /dev/null -w \" %{http_code} voicemail\" http://localhost:3000/api/voicemail-redirect/demo)",
+      "Bash(curl -s -o /dev/null -w \" %{http_code} childcare\\\\n\" http://localhost:3000/api/childcare-alert/demo)",
+      "Bash(curl -s -X POST http://localhost:8000/find-provider -H \"Content-Type: application/json\" -d '{\"care_type\":\"gp\",\"location\":\"Sydney CBD 2000\"}')",
+      "Bash(python3.12 -m json.tool)",
+      "Bash(curl -s -X POST http://localhost:8000/find-provider -H 'Content-Type: application/json' -d '{\"care_type\":\"gp\",\"location\":\"Nedlands WA 6009\"}')",
+      "Bash(python3 -c ':*)"
+    ]
+  }
+}
