@@ -1,5 +1,37 @@
-venv/
+# Dependencies
 node_modules/
-__pycache__/
+venv/
+
+# Build
 .next/
+out/
+dist/
+
+# Python
+__pycache__/
 *.pyc
+*.pyo
+
+# Environment
+.env
+.env.local
+.env*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Debug
+npm-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+
+# Misc
+*.log
