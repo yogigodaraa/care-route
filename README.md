@@ -1,129 +1,58 @@
-# Little Help — Where to Go When
+# Little Help
 
 **Stop guessing. Get the right care, right now.**
 
-Little Help is an AI-powered care routing tool that helps people figure out *where* to go when they're unwell — before they default to the emergency department. It triages symptoms through a friendly chat interface, finds nearby providers (GPs, urgent care, pharmacies), and gives a clear recommendation in seconds.
+AI-powered care routing — helps people figure out *where* to go when they're unwell (GP, urgent care, pharmacy, or ED) before they default to the emergency department.
 
-Built for the [Visagio Hackathon 2025](https://www.visagio.com/) under the "Agentic AI" track.
+Built for the 2025 Visagio Hackathon under the *Agentic AI* track.
 
----
+## The problem
 
-## The Problem
+Australian EDs are overwhelmed by patients who didn't need to be there — a persistent cough, a child's fever, a minor injury. When it's 10pm and you're stressed, the ER feels like the only option. Little Help intercepts those cases *before* they reach ED.
 
-Emergency departments across Australia are overwhelmed with patients who didn't need to be there. A persistent cough, a child's fever, a minor injury — conditions better handled at a GP, urgent care clinic, or pharmacy. But when you're stressed and it's 10pm, the ER feels like the only option.
+## How it works
 
-**Little Help gets to people *before* they get to ED.**
+1. **Describe symptoms** in plain language
+2. **AI triage** — Claude assesses urgency and recommends the right setting
+3. **Find nearby providers** — real-time search via Google Places, availability via HotDoc scraping
+4. **Go get care** — directions, hours, booking links
 
----
+## Tech stack
 
-## How It Works
+**Frontend**
+- Next.js 16, React 19, TypeScript
+- Tailwind CSS v4, shadcn/ui
+- Claude API for conversational triage
 
-1. **Describe what's going on** — type your symptoms in plain language
-2. **AI triage** — Claude assesses urgency and recommends the right care setting (GP, urgent care, pharmacy, or ED)
-3. **Find nearby providers** — real-time search for open providers near you, ranked by relevance
-4. **Go get care** — directions, hours, and booking links ready to go
+**Backend** (`littlehelp/phase3`)
+- FastAPI (Python)
+- Provider scraping + availability ranking
+- Google Places API
 
----
+## Getting started
 
-## Tech Stack
-
-| Layer | Tech |
-|-------|------|
-| **Frontend** | Next.js 16, React 19, Tailwind CSS 4, shadcn/ui |
-| **AI Triage** | Claude API (Anthropic) |
-| **Provider Search** | Python + FastAPI, Google Places API, HotDoc scraping |
-| **Voice Input** | Vapi AI |
-| **Deployment** | Vercel (frontend) |
-
----
-
-## Project Structure
-
-```
-littlehelp/
-  app/                    # Next.js pages & API routes
-    api/
-      triage/             # Symptom triage endpoint
-      find-provider/      # Provider search endpoint
-      whatsapp/           # WhatsApp integration
-      sms/                # SMS integration
-      voicemail-redirect/ # Voicemail integration
-      childcare-alert/    # Childcare alert integration
-      places/             # Google Places proxy
-  components/
-    baby-health/          # Main app screens
-  phase3/                 # Python backend
-    main.py               # FastAPI server
-    scraper.py            # HotDoc provider scraper
-    ranker.py             # Provider ranking algorithm
-    places.py             # Google Places integration
-    triage.py             # Triage logic
-```
-
----
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js 18+
-- Python 3.12+
-- API keys: Anthropic (Claude), Google Places, Vapi (optional)
-
-### Frontend
+App lives in `littlehelp/`. See that directory for setup.
 
 ```bash
+# Frontend
 cd littlehelp
 npm install
-npm run dev
-```
+npm run dev            # http://localhost:3000
 
-Open [http://localhost:3000](http://localhost:3000).
-
-### Backend (Provider Search)
-
-```bash
-cd littlehelp/phase3
-python -m venv venv
-source venv/bin/activate
+# Backend
+cd phase3
 pip install -r requirements.txt
-playwright install chromium
-uvicorn main:app --reload --port 8000
+uvicorn main:app --reload  # http://localhost:8000
 ```
 
-### Environment Variables
+## Repo layout
 
-Create a `.env.local` file in `littlehelp/`:
-
-```env
-ANTHROPIC_API_KEY=your-key-here
-GOOGLE_PLACES_API_KEY=your-key-here
-VAPI_API_KEY=your-key-here          # optional, for voice
-TWILIO_ACCOUNT_SID=your-sid-here    # optional, for SMS/WhatsApp
-TWILIO_AUTH_TOKEN=your-token-here    # optional, for SMS/WhatsApp
+```
+littlehelp/                Main application (Next.js + FastAPI)
+problem-statement/         Hackathon brief + research
+distribution-strategy.md   Go-to-market: multi-channel (GP sites, WhatsApp, SMS)
 ```
 
----
+## Status
 
-## Multi-Channel Distribution
-
-Little Help isn't just an app — it's designed to meet people where they already are:
-
-- **Google Search** — SEO landing pages for health-panic searches
-- **GP & clinic websites** — embeddable widget
-- **HotDoc / HealthEngine** — platform integrations
-- **WhatsApp & SMS** — text-based triage
-- **Voicemail redirect** — after-hours GP lines route to Little Help
-- **Childcare centres** — alerts when a child is sick at daycare
-
----
-
-## Team
-
-Built by the Little Help team at the Visagio Hackathon 2025.
-
----
-
-## License
-
-This project was built for a hackathon. Not yet licensed for production use.
+Hackathon prototype (Visagio 2025). Not clinically validated. No production-grade safety review. Not yet licensed for production use.
