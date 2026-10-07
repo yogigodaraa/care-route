@@ -32,7 +32,7 @@ print()
 print("Step 3: Ranking providers...")
 ranked = rank_providers(places, scraped, care_type=CARE_TYPE)
 
-print(f"\n=== Top 5 Results ===\n")
+print("\n=== Top 5 Results ===\n")
 for i, r in enumerate(ranked[:5], 1):
     print(f"{i}. {r['name']} (score: {r['score']})")
     print(f"   Address: {r['address']}")
