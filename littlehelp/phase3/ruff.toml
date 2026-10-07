@@ -1,0 +1,11 @@
+# Explicit lint baseline (ruff's classic defaults: pyflakes + core pycodestyle errors).
+target-version = "py312"
+exclude = [".venv"]
+
+[lint]
+select = ["E4", "E7", "E9", "F"]
+
+[lint.per-file-ignores]
+# load_dotenv() has to run before the imports that read environment variables.
+"main.py" = ["E402"]
+"run_full_pipeline.py" = ["E402"]

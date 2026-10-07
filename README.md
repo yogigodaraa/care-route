@@ -1,5 +1,12 @@
 # Little Help
 
+[![CI](https://github.com/yogigodaraa/care-route/actions/workflows/ci.yml/badge.svg)](https://github.com/yogigodaraa/care-route/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+> [!WARNING]
+> **Not medical advice.** Little Help is a hackathon prototype for *care navigation*. It doesn't diagnose,
+> and it isn't clinically validated. **In an emergency, call 000.**
+
 **Stop guessing. Get the right care, right now.**
 
 AI-powered care routing — helps people figure out *where* to go when they're unwell (GP, urgent care, pharmacy, or ED) before they default to the emergency department.
@@ -13,7 +20,7 @@ Australian EDs are overwhelmed by patients who didn't need to be there — a per
 ## How it works
 
 1. **Describe symptoms** in plain language
-2. **AI triage** — Claude assesses urgency and recommends the right setting
+2. **Triage**: a rule-based engine (`littlehelp/phase3/triage.py`, modelled on the Australian Triage Scale) plus a guided question flow (`model2.py`) picks ED, urgent clinic, GP or pharmacy. Voice mode uses [Vapi](https://vapi.ai).
 3. **Find nearby providers** — real-time search via Google Places, availability via HotDoc scraping
 4. **Go get care** — directions, hours, booking links
 
@@ -22,12 +29,14 @@ Australian EDs are overwhelmed by patients who didn't need to be there — a per
 **Frontend**
 - Next.js 16, React 19, TypeScript
 - Tailwind CSS v4, shadcn/ui
-- Claude API for conversational triage
+- Vapi voice assistant (optional)
 
 **Backend** (`littlehelp/phase3`)
 - FastAPI (Python)
-- Provider scraping + availability ranking
+- Rule-based triage + guided questions
+- Provider scraping (Playwright) + availability ranking
 - Google Places API
+- SMS via Mobile Message (optional)
 
 ## Getting started
 
@@ -36,13 +45,22 @@ App lives in `littlehelp/`. See that directory for setup.
 ```bash
 # Frontend
 cd littlehelp
-npm install
+cp .env.example .env   # keys are optional for the demo screens
+npm ci
 npm run dev            # http://localhost:3000
 
 # Backend
 cd phase3
 pip install -r requirements.txt
 uvicorn main:app --reload  # http://localhost:8000
+```
+
+### Tests and checks
+
+```bash
+cd littlehelp/phase3 && pytest && ruff check .   # triage + ranker tests, offline
+cd littlehelp && npm run typecheck && npm run build
+python run_full_pipeline.py                       # manual end-to-end run (needs API keys + network)
 ```
 
 ## Repo layout

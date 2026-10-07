@@ -368,8 +368,6 @@ def evaluate(symptom_id: str, answers: dict[str, str]) -> dict:
             reasoning_parts.append(f"{q['text']} → {selected['label']} (concerning)")
 
     # Decision logic
-    total = sum(scores.values())
-
     # Rule 1: Any emergency answer → ED
     if has_emergency:
         return {
