@@ -78,7 +78,7 @@ _COMBO_EMERGENCY = [
     # (all terms must be present, any from each sub-list)
     (["fever", "temperature"], ["seizure", "seizures", "convulsion", "fitting", "fits"]),
     (["fever", "temperature"], ["rash"], ["stiff neck", "neck stiffness", "neck is stiff"]),
-    (["headache"], ["worst ever", "worst of my life", "thunderclap", "sudden severe"]),
+    (["headache"], ["worst ever", "worst of my life", "worst headache", "thunderclap", "sudden severe"]),
     (["head injury", "hit head", "hit his head", "hit her head", "fell on head"],
      ["vomiting", "throwing up", "drowsy", "confused", "sleepy", "won't wake"]),
     (["baby", "infant", "newborn", "child", "toddler"],
