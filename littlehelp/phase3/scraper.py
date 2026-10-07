@@ -8,7 +8,6 @@ times as <a> links containing booking URLs with clinic ID, doctor ID, and time.
 """
 
 import re
-from urllib.parse import unquote
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
 from bs4 import BeautifulSoup
 
@@ -138,7 +137,6 @@ def scrape_hotdoc(care_type: str, location: str) -> list[dict]:
             doctor_links = soup.find_all("a", href=re.compile(r"/medical-centres/[^/]+/[^/]+/dr-"))
             for dl in doctor_links:
                 name = dl.get_text(strip=True)
-                dhref = dl.get("href", "")
                 # Find nearby booking link to get doctor_id
                 parent = dl.find_parent()
                 if parent:
@@ -261,7 +259,6 @@ def scrape_hotdoc(care_type: str, location: str) -> list[dict]:
                     if grandparent:
                         card_text = grandparent.get_text(separator=" ")
                 card_text_lower = card_text.lower()
-                text_lower = text.lower()
 
                 # Detect bulk billing from card text
                 bulk_billing = any(kw in card_text_lower for kw in ["bulk bill", "bulk billing", "bulk billed"])

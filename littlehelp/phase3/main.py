@@ -122,23 +122,33 @@ def _detect_state(location: str, lat: float | None = None, lng: float | None = N
     pc_match = re.search(r"\b(\d{4})\b", location)
     if pc_match:
         pc = int(pc_match.group(1))
-        if 6000 <= pc <= 6999: return "wa"
-        if 2000 <= pc <= 2599 or 2619 <= pc <= 2999: return "nsw"
-        if 2600 <= pc <= 2618: return "act"
-        if 3000 <= pc <= 3999: return "vic"
-        if 4000 <= pc <= 4999: return "qld"
-        if 5000 <= pc <= 5999: return "sa"
-        if 7000 <= pc <= 7999: return "tas"
-        if 800 <= pc <= 899: return "nt"
+        if 6000 <= pc <= 6999:
+            return "wa"
+        if 2000 <= pc <= 2599 or 2619 <= pc <= 2999:
+            return "nsw"
+        if 2600 <= pc <= 2618:
+            return "act"
+        if 3000 <= pc <= 3999:
+            return "vic"
+        if 4000 <= pc <= 4999:
+            return "qld"
+        if 5000 <= pc <= 5999:
+            return "sa"
+        if 7000 <= pc <= 7999:
+            return "tas"
+        if 800 <= pc <= 899:
+            return "nt"
 
     # Check coordinates (rough bounding boxes)
     if lat and lng:
-        if lng < 129: return "wa"
+        if lng < 129:
+            return "wa"
         if lng < 138:
             return "sa" if lat > -30 else "sa"
         if lng < 141:
             return "vic" if lat < -34 else "nsw"
-        if lat < -28: return "nsw"
+        if lat < -28:
+            return "nsw"
         return "qld"
 
     return "nsw"
