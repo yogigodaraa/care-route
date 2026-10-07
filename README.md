@@ -2,6 +2,9 @@
 
 [![CI](https://github.com/yogigodaraa/care-route/actions/workflows/ci.yml/badge.svg)](https://github.com/yogigodaraa/care-route/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+![Status: maintenance](https://img.shields.io/badge/status-maintenance%20only-lightgrey)
+
+> **Status: complete — maintenance only.** This project works and stays online, but no new features are planned. Security updates are still applied.
 
 > [!WARNING]
 > **Not medical advice.** Little Help is a hackathon prototype for *care navigation*. It doesn't diagnose,
